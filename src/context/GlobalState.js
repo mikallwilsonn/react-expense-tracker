@@ -3,7 +3,36 @@ import AppReducer from './AppReducer';
 
 
 const initialState = {
-    transactions: []
+    transactions: [
+        {
+            amount: 1900.00,
+            type: 'income',
+            text: 'Paycheque',
+            date: 'March 11th, 2020',
+            id: 1
+        },
+        {
+            amount: 6.59,
+            type: 'expense',
+            text: 'Johnny\'s Diner - Breakfast',
+            date: 'March 11th, 2020',
+            id: 2
+        },
+        {
+            amount: 14.99,
+            type: 'expense',
+            text: 'Spotify Subscription',
+            date: 'March 11th, 2020',
+            id: 3
+        },
+        {
+            amount: 3.49,
+            type: 'expense',
+            text: 'CoffeeHouse Supreme Coffee',
+            date: 'March 11th, 2020',
+            id: 4
+        }
+    ]
 }
 
 

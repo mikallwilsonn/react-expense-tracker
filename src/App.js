@@ -1,30 +1,47 @@
-import React from 'react';
+// ----
+// Dependencies
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 
-import { Header } from './components/Header';
-import { Balance } from './components/Balance';
-import { IncomeExpenses } from './components/IncomeExpenses';
-import { TransactionList } from './components/TransactionList';
-import { AddTransaction } from './components/AddTransaction';
-
+// ----
+// Child Components
 import { GlobalProvider } from './context/GlobalState';
+import Header from './components/Header';
+import { TransactionList } from './components/TransactionList';
 
-function App() {
-  return (
-    <GlobalProvider>
-      <Header />
 
-      <div className="container">
-        <Balance />
+// ----
+// App class component
+class App extends Component {
+    render() {
+        return (
+            <GlobalProvider>
+                <div className="col-lg-12 p-0 m-0 row justify-content-between">
+                    <div 
+                        id="LeftPanel"
+                        className="p-5 m-0"
+                    >
+                        <Header />
 
-        <IncomeExpenses />
+                        <TransactionList />
+                    </div>
 
-        <TransactionList />
-
-        <AddTransaction />
-      </div>
-    </GlobalProvider>
-  );
+                    <div 
+                        id="RightPanel"
+                        className="p-5 m-0"
+                    >
+                        transaction makeup and charts go here
+                    </div>
+                </div>
+            </GlobalProvider>
+        );
+    }
 }
 
+
+// ----
+// Export
 export default App;
