@@ -1,23 +1,172 @@
+/* 
+  ---- Imports
+*/
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+
+/* 
+  ---- Global
+*/
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  --green: #47CF73;
+  --green-light: #75DE97;
+
+  --red: #FF3C41;
+  --red-light: #F87376;
+
+  --purple: #AE63E4;
+  --purple-light: #CC98F2;
+
+  --blue: #0EBEFF;
+  --blue-light: #76DAFF;
+
+  --yellow: #FCD000;
+  --yellow-light: #FFE467;
+
+  --dark: #707070;
+  --light: #F2F2F2;
+
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 body {
-  background-color: #f7f7f7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: var( --light ) !important;
   min-height: 100vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
 }
+
+button {
+  padding: 10px 50px !important;
+  border-radius: 3px !important;
+  transition: 0.3s;
+  outline: none !important;
+}
+
+button:hover {
+  transform: scale( 1.05 );
+}
+
+/*
+  ---- Utilities
+*/
+.bg-green-gradient {
+  background: linear-gradient(to right, var( --green-light) 0%, var( --green ) 100%);
+}
+
+.bg-red-gradient {
+  background: linear-gradient(to right, var( --red-light) 0%, var( --red ) 100%);
+}
+
+.text-shadow {
+  text-shadow: 0px 2px 3px rgba( 112, 112, 112, 0.5 );
+}
+
+.text-dark {
+  color: var( --dark ) !important;
+}
+
+
+
+
+/* 
+  ---- Layout
+*/
+#LeftPanel {
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  width: calc( 100% - 500px);
+  max-width: 100%;
+  min-width: calc( 100% - 500px )
+}
+
+#RightPanel {
+  background-color: #FFF;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  width: 500px;
+  max-width: 100%;
+  min-width: 500px;
+}
+
+
+/* 
+  ---- Header 
+*/
+#AddIncomeButton {}
+#AddExpenseButton {}
+
+
+
+/*
+  ---- TransactionList
+*/
+.transaction {
+  border-radius: 10px !important;
+}
+
+.transaction__icon {
+  height: 125px !important;
+  width: 125px !important;
+  border-radius: 10px 0px 0px 10px !important;
+}
+
+.transaction__icon svg {
+  height: auto;
+  width: 60px;
+}
+
+.transaction__icon-income { background-color: var( --green-light ); }
+.transaction__icon-expense { background-color: var( --red-light ); }
+
+
+.transaction__details {
+  width: calc( 100% - 125px );
+  max-width: calc( 100% - 125px );
+  min-width: calc( 100% - 125px );
+}
+
+.transaction__details--date {
+  color: var( --dark );
+  opacity: 0.8;
+}
+
+.transaction__details--label {
+  color: var( --dark );
+}
+
+.transaction__amount {} 
+
+.transaction__amount-income { color: var( --green ); }
+.transaction__amount-expense { color: var( --red ); }
+
+.transaction__delete-button {
+  height: 25px;
+  width: 25px;
+  border-radius: 3px;
+  background-color: var( --light );
+  opacity: 0.5;
+}
+
+.transaction__delete-button:hover {
+  opacity: 1;
+}
+
+.transaction__delete-button svg {
+  width: 10px;
+  height: 10px;
+}
+
+
+
+/* 
+  ---- Old
+*/
 
 .container {
   margin: 30px auto;
