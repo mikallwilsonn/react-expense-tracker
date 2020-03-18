@@ -25,6 +25,7 @@
   --yellow: #FCD000;
   --yellow-light: #FFE467;
 
+  --black: rgba( 75, 75, 75, 1 );
   --dark: #707070;
   --light: #F2F2F2;
 
@@ -67,9 +68,10 @@ button:hover {
   text-shadow: 0px 2px 3px rgba( 112, 112, 112, 0.5 );
 }
 
-.text-dark {
-  color: var( --dark ) !important;
-}
+.text-black { color: var( --black ); }
+.text-dark { color: var( --dark ) !important; }
+.text-green { color: var( --green ); }
+.text-red { color: var( --red ); }
 
 
 
@@ -100,6 +102,16 @@ button:hover {
 */
 #AddIncomeButton {}
 #AddExpenseButton {}
+
+#BalanceSheet {}
+
+#BalanceSheet tr { 
+  width: 100%; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#BalanceSheet tr td { text-align: right; }
 
 
 
@@ -233,7 +245,6 @@ input[type='number'] {
   display: block;
   font-size: 16px;
   padding: 10px;
-  width: 100%;
 }
 
 .btn {
@@ -245,8 +256,6 @@ input[type='number'] {
   display: block;
   font-size: 16px;
   margin: 10px 0 30px;
-  padding: 10px;
-  width: 100%;
 }
 
 .btn:focus,

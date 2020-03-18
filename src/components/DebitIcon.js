@@ -27,7 +27,7 @@ export const DebitIcon = () => {
                         result="blur"
                     />
 
-                    <feFlood flood-opacity="0.098"/>
+                    <feFlood floodOpacity="0.098"/>
 
                     <feComposite 
                         operator="in" 
