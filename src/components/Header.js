@@ -1,8 +1,47 @@
 // ----
 // Dependencies
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
+
+// ----
+// Child Components
+import BalanceSheet from './BalanceSheet';
+import { AddTransaction } from './AddTransaction';
+
+
+// ----
+// Header class component
 class Header extends Component {
+    constructor() {
+        super();
+        this.state = { formToDisplay: null }
+    }
+
+
+    // ----
+    // Set Form To Display
+    setFormToDisplay( type ) {
+        if ( type === this.state.formToDisplay ) {
+            this.setState({ formToDisplay: null });
+        } else {
+            this.setState({ formToDisplay: type });
+        }
+    }
+
+
+    // ----
+    // Render Transaction Form
+    renderTransactionForm() {
+        if ( this.state.formToDisplay !== null ) {
+            return <AddTransaction formType={this.state.formToDisplay} />;
+        } else {
+            return '';
+        }
+    }
+
+
+    // ----
+    // Render Component
     render() {
         return (
             <header className="col-lg-12 d-flex flex-column p-0 m-0">
@@ -11,19 +50,14 @@ class Header extends Component {
                         Expense Tracker
                     </h1> 
 
-                    <div className="d-flex flex-column">
-                        Income <br />
-                        Expenses <br />
-                        Currrent Balance <br />
-                        Number of Transactions
-                    </div>
+                    <BalanceSheet />
                 </div>
 
                 <div className="col-lg-12 p-0 m-0">
                     <button 
                         id="AddIncomeButton"
                         className="bg-green-gradient text-white text-uppercase text-shadow mr-2"
-                        onClick={() => alert( 'Adding income coming soon' )}
+                        onClick={() => this.setFormToDisplay( 'income' )}
                     >
                         Add Income
                     </button>
@@ -31,10 +65,14 @@ class Header extends Component {
                     <button
                         id="AddExpenseButton"
                         className="bg-red-gradient text-white text-uppercase text-shadow"
-                        onClick={() => alert( 'Adding expense coming soon' )}
+                        onClick={() => this.setFormToDisplay( 'expense' )}
                     >
                         Add Expense
                     </button>
+                </div>
+
+                <div className="col-lg-12 p-0 m-0">
+                    { this.renderTransactionForm() }
                 </div>
 
             </header>

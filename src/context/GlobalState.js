@@ -6,28 +6,31 @@ const initialState = {
     transactions: [
         {
             amount: 1900.00,
-            type: 'income',
+            transactionType: 'income',
             text: 'Paycheque',
             date: 'March 11th, 2020',
             id: 1
         },
         {
             amount: 6.59,
-            type: 'expense',
+            transactionType: 'expense',
+            expenseType: 'food',
             text: 'Johnny\'s Diner - Breakfast',
             date: 'March 11th, 2020',
             id: 2
         },
         {
             amount: 14.99,
-            type: 'expense',
+            transactionType: 'expense',
+            expenseType: 'entertainment',
             text: 'Spotify Subscription',
             date: 'March 11th, 2020',
             id: 3
         },
         {
             amount: 3.49,
-            type: 'expense',
+            transactionType: 'expense',
+            expenseType: 'food',
             text: 'CoffeeHouse Supreme Coffee',
             date: 'March 11th, 2020',
             id: 4

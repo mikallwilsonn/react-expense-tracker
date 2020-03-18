@@ -18,30 +18,45 @@ export const Transaction = ({ transaction }) => {
 
     let sign;
 
-    if ( transaction.type === 'income' ) {
+    if ( transaction.transactionType === 'income' ) {
         sign = '+';
     } else {
         sign = '-';
     }
 
+    // Render Transaction Icon
     const renderTransactionIcon = () => {
-        if ( transaction.type === 'income' ) {
+        if ( transaction.transactionType === 'income' ) {
             return <DebitIcon />;
         } else {
             return <CreditIcon />;
         }
     }
 
+
+    // Render Amount in currency
+    const renderAmountAsCurrency = () => {
+        const formatter = new Intl.NumberFormat( 'en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        });
+
+        return formatter.format( transaction.amount )
+    }
+
+
+    // Render Component
     return (
         <li className="transaction p-0 row mt-2">
-            <div className={`transaction__icon transaction__icon-${transaction.type} row justify-content-center align-items-center p-0 m-0`}>
+            <div className={`transaction__icon transaction__icon-${transaction.transactionType} row justify-content-center align-items-center p-0 m-0`}>
                 { renderTransactionIcon() }
             </div>
 
             <div className="transaction__details row justify-content-between align-items-center m-0 p-0">
                 <div className="d-flex flex-column justify-content-center pl-5">
                     <span className="transaction__details--date">
-                        { transaction.date }
+                        { transaction.date } { transaction.expenseType ? `- ${transaction.expenseType}` : '' }
                     </span>
 
                     <p className="transaction__details--label h4">
@@ -50,8 +65,8 @@ export const Transaction = ({ transaction }) => {
                 </div>
 
                 <div className="row align-items-center m-0 p-0 pr-5">
-                    <span className={`transaction__amount transaction__amount-${transaction.type} p-0 m-0 mr-5 h5`}>
-                        { sign }{ transaction.amount }
+                    <span className={`transaction__amount transaction__amount-${transaction.transactionType} p-0 m-0 mr-5 h5`}>
+                        { sign }{ renderAmountAsCurrency() }
                     </span>
 
                     <button 
