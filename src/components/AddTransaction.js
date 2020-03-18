@@ -4,13 +4,14 @@ import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = ({ formType }) => {
 
-    console.log( formType );
-
     const [ text, setText ] = useState( '' );
     const [ amount, setAmount ] = useState( 0 );
     const [ expenseType, setExpenseType ]  = useState( 'income' );
     const [ date, setDate ] = useState( 'March 11th 2020' );
-    const { addTransaction } = useContext( GlobalContext );
+
+    const { 
+        addTransaction, updateIncomeTotal, updateExpensesTotal 
+    } = useContext( GlobalContext );
 
     const onSubmit = ( event ) => {
         event.preventDefault();
@@ -36,19 +37,27 @@ export const AddTransaction = ({ formType }) => {
             }
         }
 
-
-        console.log( newTransaction );
-
         addTransaction( newTransaction );
 
-        document.querySelector( 'form#form' ).reset();
+        if ( formType === 'income' ) {
+            updateIncomeTotal( parseInt( amount ));
+        } else {
+            updateExpensesTotal( parseInt( amount ));
+        }
+
+        setText( '' );
+        setAmount( 0 );
+
+        if ( formType === 'expense') {
+            setExpenseType( 'bills' )
+        }
     }
 
 
     return (
         <form 
             id="form" 
-            className="col-lg-12 row justify-content-between align-items-center p-0 m-0"
+            className="col-lg-12 row justify-content-between align-items-center p-0 m-0 mt-4"
             onSubmit={ onSubmit }
         >
             <input 
@@ -60,11 +69,29 @@ export const AddTransaction = ({ formType }) => {
 
             {
                 formType === 'expense' ?
-                    <select onChange={( event ) => setExpenseType( event.target.value )}>
-                        <option value="bills">Bills</option>
-                        <option value="rent/mortage">Rent / Mortgage</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="dining">Dining</option>
+                    <select 
+                        className="form-control d-inline w-auto"
+                        onChange={( event ) => setExpenseType( event.target.value )}
+                    >
+                        <option value="bills">
+                            Bills
+                        </option>
+
+                        <option value="rent/mortage">
+                            Rent / Mortgage
+                        </option>
+
+                        <option value="shopping">
+                            Shopping
+                        </option>
+
+                        <option value="entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="dining">
+                            Dining
+                        </option>
                     </select>
                 :
                     ''
@@ -85,8 +112,8 @@ export const AddTransaction = ({ formType }) => {
                 onChange={ ( event ) => setDate( event.target.value )}
             />
 
-            <button className="btn">
-                Add transaction
+            <button className="m-0 bg-purple-gradient text-uppercase text-white">
+                Record transaction
             </button>
         </form>
     )

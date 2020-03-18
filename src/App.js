@@ -8,9 +8,15 @@ import './App.css';
 
 // ----
 // Child Components
-import { GlobalProvider } from './context/GlobalState';
 import Header from './components/Header';
 import { TransactionList } from './components/TransactionList';
+import { TransactionMakeup } from './components/TransactionMakeup';
+import { TransactionCharts } from './components/TransactionCharts';
+
+
+// ----
+// Context
+import { GlobalProvider } from './context/GlobalState';
 
 
 // ----
@@ -33,7 +39,9 @@ class App extends Component {
                         id="RightPanel"
                         className="p-5 m-0"
                     >
-                        transaction makeup and charts go here
+                        <TransactionMakeup />
+
+                        <TransactionCharts />
                     </div>
                 </div>
             </GlobalProvider>
