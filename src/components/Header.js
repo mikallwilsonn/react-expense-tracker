@@ -46,7 +46,7 @@ class Header extends Component {
         return (
             <header className="col-lg-12 d-flex flex-column p-0 m-0">
                 <div className="col-lg-12 row justify-content-between m-0 p-0">
-                    <h1 className="text-dark">
+                    <h1 className="text-dark font-bold">
                         Expense Tracker
                     </h1> 
 
@@ -56,7 +56,7 @@ class Header extends Component {
                 <div className="col-lg-12 p-0 m-0">
                     <button 
                         id="AddIncomeButton"
-                        className="bg-green-gradient text-white text-uppercase text-shadow mr-2"
+                        className="bg-green-gradient text-white text-uppercase text-shadow mr-2 font-regular"
                         onClick={() => this.setFormToDisplay( 'income' )}
                     >
                         Add Income
@@ -64,7 +64,7 @@ class Header extends Component {
 
                     <button
                         id="AddExpenseButton"
-                        className="bg-red-gradient text-white text-uppercase text-shadow"
+                        className="bg-red-gradient text-white text-uppercase text-shadow font-regular"
                         onClick={() => this.setFormToDisplay( 'expense' )}
                     >
                         Add Expense

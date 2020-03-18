@@ -2,6 +2,7 @@
 // Dependencies
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import currencyFormatter from '../utils/currencyFormatter';
 
 
 // ----
@@ -14,7 +15,9 @@ import { CreditIcon } from './CreditIcon';
 // Transaction functional component
 export const Transaction = ({ transaction }) => {
 
-    const { deleteTransaction } = useContext( GlobalContext );
+    const { 
+        deleteTransaction, removeIncomeFromTotal, removeExpenseFromTotal 
+    } = useContext( GlobalContext );
 
     let sign;
 
@@ -34,15 +37,15 @@ export const Transaction = ({ transaction }) => {
     }
 
 
-    // Render Amount in currency
-    const renderAmountAsCurrency = () => {
-        const formatter = new Intl.NumberFormat( 'en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2
-        });
+    // Handle Transaction Deletion
+    const handleTransactionDeletion = () => {
+        deleteTransaction( transaction.id );
 
-        return formatter.format( transaction.amount )
+        if ( transaction.transactionType === 'income' ) {
+            removeIncomeFromTotal( parseFloat( transaction.amount ));
+        } else {
+            removeExpenseFromTotal( parseFloat( transaction.amount ));
+        }
     }
 
 
@@ -55,23 +58,23 @@ export const Transaction = ({ transaction }) => {
 
             <div className="transaction__details row justify-content-between align-items-center m-0 p-0">
                 <div className="d-flex flex-column justify-content-center pl-5">
-                    <span className="transaction__details--date">
+                    <span className="transaction__details--date font-regular">
                         { transaction.date } { transaction.expenseType ? `- ${transaction.expenseType}` : '' }
                     </span>
 
-                    <p className="transaction__details--label h4">
+                    <p className="transaction__details--label h4 font-bold">
                         { transaction.text }
                     </p>
                 </div>
 
                 <div className="row align-items-center m-0 p-0 pr-5">
-                    <span className={`transaction__amount transaction__amount-${transaction.transactionType} p-0 m-0 mr-5 h5`}>
-                        { sign }{ renderAmountAsCurrency() }
+                    <span className={`transaction__amount transaction__amount-${transaction.transactionType} p-0 m-0 mr-5 h5 font-bold`}>
+                        { sign }{ currencyFormatter( transaction.amount ) }
                     </span>
 
                     <button 
                         className="transaction__delete-button p-0 m-0 row justify-content-center align-items-center"
-                        onClick={() => deleteTransaction( transaction.id )}
+                        onClick={() => handleTransactionDeletion( transaction.id )}
                     >
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 

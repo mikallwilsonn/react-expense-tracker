@@ -1,8 +1,10 @@
 /* 
   ---- Imports
 */
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 700; }
+.font-bold { font-weight: 900 }
 
 /* 
   ---- Global
@@ -39,7 +41,7 @@ body {
   background-color: var( --light ) !important;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important;
 }
 
 button {
@@ -57,11 +59,15 @@ button:hover {
   ---- Utilities
 */
 .bg-green-gradient {
-  background: linear-gradient(to right, var( --green-light) 0%, var( --green ) 100%);
+  background: linear-gradient(to right, var( --green-light ) 0%, var( --green ) 100%);
 }
 
 .bg-red-gradient {
-  background: linear-gradient(to right, var( --red-light) 0%, var( --red ) 100%);
+  background: linear-gradient(to right, var( --red-light ) 0%, var( --red ) 100%);
+}
+
+.bg-purple-gradient {
+  background: linear-gradient(to right, var( --purple-light ) 0%, var( --purple ) 100%);
 }
 
 .text-shadow {
@@ -100,10 +106,12 @@ button:hover {
 /* 
   ---- Header 
 */
+
+/*
 #AddIncomeButton {}
 #AddExpenseButton {}
-
 #BalanceSheet {}
+*/
 
 #BalanceSheet tr { 
   width: 100%; 
@@ -118,9 +126,8 @@ button:hover {
 /*
   ---- TransactionList
 */
-.transaction {
-  border-radius: 10px !important;
-}
+
+.transaction { border-radius: 10px !important; }
 
 .transaction__icon {
   height: 125px !important;
@@ -130,7 +137,7 @@ button:hover {
 
 .transaction__icon svg {
   height: auto;
-  width: 60px;
+  width: 50px;
 }
 
 .transaction__icon-income { background-color: var( --green-light ); }
@@ -152,7 +159,9 @@ button:hover {
   color: var( --dark );
 }
 
+/*
 .transaction__amount {} 
+*/
 
 .transaction__amount-income { color: var( --green ); }
 .transaction__amount-expense { color: var( --red ); }
@@ -165,13 +174,25 @@ button:hover {
   opacity: 0.5;
 }
 
-.transaction__delete-button:hover {
-  opacity: 1;
-}
+.transaction__delete-button:hover { opacity: 1; }
 
 .transaction__delete-button svg {
   width: 10px;
   height: 10px;
+}
+
+
+/*
+  ---- Transaction Charts
+*/
+
+
+.nav-link { color: var( --dark ) !important; }
+
+.nav-link.active {
+  background-color: #FFF !important;
+  color: var( --dark ) !important;
+  box-shadow: 0px 2px 3px rgba( 112, 112, 112, 0.25 );
 }
 
 

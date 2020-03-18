@@ -1,43 +1,63 @@
 // ----
 // Dependencies
-import React, { Component } from 'react';
-
+import React, { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
+import currencyFormatter from '../utils/currencyFormatter';
 
 // ----
 // BalanceSheet class component
-class BalanceSheet extends Component {
-    render() {
-        return (
-            <table 
-                id="BalanceSheet"
-                className="d-flex flex-column p-0 m-0"
-            >
-                <thead className="p-0 m-0"></thead>
-                <tbody className="p-0 m-0">
-                    <tr>
-                        <td>Income</td>
-                        <td className="text-green">$1900</td>
-                    </tr>
+const BalanceSheet = () => {
+    const { transactions, incomeTotal, expensesTotal } = useContext( GlobalContext );
 
-                    <tr>
-                        <td>Expenses</td>
-                        <td className="text-red">$25</td>
-                    </tr>
+    return (
+        <table 
+            id="BalanceSheet"
+            className="d-flex flex-column p-0 m-0"
+        >
+            <thead className="p-0 m-0"></thead>
+            <tbody className="p-0 m-0">
+                <tr>
+                    <td className="font-regular">
+                        Income
+                    </td>
 
-                    <tr>
-                        <td>Current Balance</td>
-                        <td className="text-black">$1800</td>
-                    </tr>
+                    <td className="text-green font-bold">
+                        { currencyFormatter( incomeTotal ) }
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>Number of Transactions</td>
-                        <td className="text-dark">4</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <td className="font-regular">
+                        Expenses
+                    </td>
 
-            </table>
-        );
-    }
+                    <td className="text-red font-bold">
+                        { currencyFormatter( expensesTotal ) }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="font-regular">
+                        Current Balance
+                    </td>
+
+                    <td className="text-black font-bold">
+                    { currencyFormatter( (incomeTotal - expensesTotal) ) }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="font-regular">
+                        Number of Transactions
+                    </td>
+
+                    <td className="text-dark font-bold">
+                        { transactions.length }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    );
 }
 
 
