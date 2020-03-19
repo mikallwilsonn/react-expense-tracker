@@ -2,10 +2,13 @@
 // Dependencies
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
+import moment from 'moment';
 
 
 // ----
 // Initial State
+const today = moment().format( "dddd, MMMM Do YYYY" );
+
 const initialState = {
     transactions: [
         {
@@ -13,39 +16,39 @@ const initialState = {
             transactionType: 'expense',
             expenseType: 'bills',
             text: 'Utility Bill',
-            date: 'March 11th, 2020',
-            id: 5
+            date: today,
+            id: 1
         },
         {
             amount: 1900.00,
             transactionType: 'income',
             text: 'Paycheque',
-            date: 'March 11th, 2020',
-            id: 1
+            date: today,
+            id: 2
         },
         {
             amount: 6.59,
             transactionType: 'expense',
-            expenseType: 'food',
+            expenseType: 'dining',
             text: 'John Smith\'s Diner - Breakfast',
-            date: 'March 11th, 2020',
-            id: 2
+            date: today,
+            id: 3
         },
         {
             amount: 14.99,
             transactionType: 'expense',
             expenseType: 'entertainment',
             text: 'Streaming Subscription',
-            date: 'March 11th, 2020',
-            id: 3
+            date: today,
+            id: 4
         },
         {
             amount: 3.49,
             transactionType: 'expense',
-            expenseType: 'food',
+            expenseType: 'dining',
             text: 'CoffeeExample - Supreme Coffee',
-            date: 'March 11th, 2020',
-            id: 4
+            date: today,
+            id: 5
         }
     ],
     incomeTotal: 1900,

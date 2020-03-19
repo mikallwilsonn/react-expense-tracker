@@ -6,6 +6,7 @@
 .font-medium { font-weight: 700; }
 .font-bold { font-weight: 900 }
 
+
 /* 
   ---- Global
 */
@@ -33,9 +34,7 @@
 
 }
 
-* {
-  box-sizing: border-box !important;
-}
+* { box-sizing: border-box !important; }
 
 body {
   background-color: var( --light ) !important;
@@ -51,9 +50,8 @@ button {
   outline: none !important;
 }
 
-button:hover {
-  transform: scale( 1.05 );
-}
+button:hover { transform: scale( 1.025 ); }
+
 
 /*
   ---- Utilities
@@ -100,6 +98,9 @@ button:hover {
   width: 500px;
   max-width: 100%;
   min-width: 500px;
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
 }
 
 
@@ -121,6 +122,33 @@ button:hover {
 
 #BalanceSheet tr td { text-align: right; }
 
+/*
+#form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+}
+*/
+
+#form div input,
+#form div select { 
+  outline: none !important;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var( --light );
+  transition: 0.5s;
+} 
+
+#form div input:hover,
+#form div select:hover {
+  border-color: var( --purple-light );
+  outline: none !important;
+}
+
+#form div input:focus, #form div input:active,
+#form div select:focus, #form div select:active {
+  border-color: var( --purple );
+  outline: none !important;
+}
 
 
 /*
@@ -143,7 +171,6 @@ button:hover {
 .transaction__icon-income { background-color: var( --green-light ); }
 .transaction__icon-expense { background-color: var( --red-light ); }
 
-
 .transaction__details {
   width: calc( 100% - 125px );
   max-width: calc( 100% - 125px );
@@ -155,9 +182,7 @@ button:hover {
   opacity: 0.8;
 }
 
-.transaction__details--label {
-  color: var( --dark );
-}
+.transaction__details--label { color: var( --dark ); }
 
 /*
 .transaction__amount {} 
@@ -186,6 +211,10 @@ button:hover {
   ---- Transaction Charts
 */
 
+#pills-tab {
+  box-shadow: inset 0px 2px 4px 0px rgba( 112, 112, 112, 0.1 );
+  border-radius: 5px;
+}
 
 .nav-link { color: var( --dark ) !important; }
 

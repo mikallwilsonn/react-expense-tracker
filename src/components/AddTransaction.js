@@ -1,13 +1,18 @@
+// ----
+// Dependencies
 import React, { useState, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import moment from 'moment';
 
 
+// ----
+// AddTransaction functional component
 export const AddTransaction = ({ formType }) => {
 
     const [ text, setText ] = useState( '' );
     const [ amount, setAmount ] = useState( 0 );
     const [ expenseType, setExpenseType ]  = useState( 'income' );
-    const [ date, setDate ] = useState( 'March 11th 2020' );
+    const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
     const { 
         addTransaction, updateIncomeTotal, updateExpensesTotal 
@@ -20,7 +25,7 @@ export const AddTransaction = ({ formType }) => {
 
         if ( formType === 'income' ) {
             newTransaction = {
-                id: Math.floor( Math.random() * 100000000 ),
+                id: Math.random().toString(16).slice(2),
                 transactionType: 'income',
                 text,
                 date,
@@ -28,7 +33,7 @@ export const AddTransaction = ({ formType }) => {
             }
         } else {
             newTransaction = {
-                id: Math.floor( Math.random() * 100000000 ),
+                id: Math.random().toString(16).slice(2),
                 transactionType: 'expense',
                 text,
                 date,
@@ -60,61 +65,74 @@ export const AddTransaction = ({ formType }) => {
             className="col-lg-12 row justify-content-between align-items-center p-0 m-0 mt-4"
             onSubmit={ onSubmit }
         >
-            <input 
-                type="text" 
-                placeholder="Enter text..." 
-                value={ text } 
-                onChange={ ( event ) => setText( event.target.value )}
-            />
+            <div className="m-0 p-0">
+                <input 
+                    type="text" 
+                    placeholder="Enter text..." 
+                    value={ text } 
+                    onChange={ ( event ) => setText( event.target.value )}
+                />
+            </div>
+
 
             {
                 formType === 'expense' ?
-                    <select 
-                        className="form-control d-inline w-auto"
-                        onChange={( event ) => setExpenseType( event.target.value )}
-                    >
-                        <option value="bills">
-                            Bills
-                        </option>
+                    <div className="m-0 p-0">
+                        <select 
+                            className="form-control d-inline w-auto"
+                            onChange={( event ) => setExpenseType( event.target.value )}
+                        >
+                            <option value="bills">
+                                Bills
+                            </option>
 
-                        <option value="rent/mortage">
-                            Rent / Mortgage
-                        </option>
+                            <option value="rent/mortage">
+                                Rent / Mortgage
+                            </option>
 
-                        <option value="shopping">
-                            Shopping
-                        </option>
+                            <option value="shopping">
+                                Shopping
+                            </option>
 
-                        <option value="entertainment">
-                            Entertainment
-                        </option>
+                            <option value="entertainment">
+                                Entertainment
+                            </option>
 
-                        <option value="dining">
-                            Dining
-                        </option>
-                    </select>
+                            <option value="dining">
+                                Dining
+                            </option>
+                        </select>
+                    </div>
+
                 :
                     ''
             }
 
+            <div className="m-0 p-0">
+                <input 
+                    className="m-0"
+                    type="number"  
+                    placeholder="Enter amount..." 
+                    value={ amount } 
+                    onChange={ ( event ) => setAmount( event.target.value )}
+                />
+            </div>
 
-            <input 
-                type="number"  
-                placeholder="Enter amount..." 
-                value={ amount } 
-                onChange={ ( event ) => setAmount( event.target.value )}
-            />
+            <div className="m-0 p-0">
+                <input 
+                    type="text" 
+                    placeholder="Date of Transaction" 
+                    value={ date } 
+                    onChange={ ( event ) => setDate( event.target.value )}
+                />
+            </div>
 
-            <input 
-                type="text" 
-                placeholder="Enter text..." 
-                value={ date } 
-                onChange={ ( event ) => setDate( event.target.value )}
-            />
+            <div className="m-0 p-0">
+                <button className="m-0 bg-purple-gradient text-uppercase text-white text-nowrap">
+                    record { formType }
+                </button>
+            </div>
 
-            <button className="m-0 bg-purple-gradient text-uppercase text-white">
-                Record transaction
-            </button>
         </form>
     )
 }
