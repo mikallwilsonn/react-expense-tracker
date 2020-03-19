@@ -1,8 +1,15 @@
+// ----
+// Dependencies
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
+// ----
+// Child Components
 import { Transaction } from './Transaction';
 
+
+// ----
+// TransactionList functional component
 export const TransactionList = () => {
 
     const { transactions } = useContext( GlobalContext );
@@ -14,7 +21,7 @@ export const TransactionList = () => {
         >
             { transactions.map( transaction  => (
                 <Transaction 
-                    key={transaction.id} 
+                    key={ transaction.id } 
                     transaction={ transaction } 
                 />
             )) }

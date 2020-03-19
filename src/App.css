@@ -101,6 +101,8 @@ button:hover { transform: scale( 1.025 ); }
   position: fixed !important;
   right: 0 !important;
   top: 0 !important;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 }
 
 
@@ -155,7 +157,10 @@ button:hover { transform: scale( 1.025 ); }
   ---- TransactionList
 */
 
-.transaction { border-radius: 10px !important; }
+.transaction { 
+  border-radius: 10px !important; 
+  min-width: 810px !important;
+}
 
 .transaction__icon {
   height: 125px !important;

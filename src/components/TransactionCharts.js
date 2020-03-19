@@ -11,7 +11,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 // ----
-// Transaction functional component
+// TransactionCharts functional component
 export const TransactionCharts = () => {
     const { incomeTotal, expensesTotal } = useContext( GlobalContext );
 
@@ -119,7 +119,11 @@ export const TransactionCharts = () => {
     // Render Component
     return (
         <div className="col-lg-12 m-0 p-0 mt-3 row justify-content-space-between align-items-center flex-wrap">
-            <ul className="col-lg-12 nav nav-pills m-0 p-2 mb-3 bg-light" id="pills-tab" role="tablist">
+            <ul 
+                className="col-lg-12 nav nav-pills m-0 p-2 mb-3 bg-light" 
+                id="pills-tab" 
+                role="tablist"
+            >
                 <li className="nav-item col-lg-6 text-center">
                     <a 
                         className="nav-link active font-medium" 
@@ -130,7 +134,7 @@ export const TransactionCharts = () => {
                         aria-controls="pills-transactions" 
                         aria-selected="true" 
                     >
-                        Transactions
+                        Expenses
                     </a>
                 </li>
 
@@ -149,9 +153,13 @@ export const TransactionCharts = () => {
                 </li>
             </ul>
 
-            <div className="tab-content col-lg-12" id="pills-tabContent">
+            <div 
+                className="tab-content col-lg-12" 
+                id="pills-tabContent"
+            >
                 <div 
-                    className="col-lg-12 tab-pane fade show active"  id="pills-transactions" 
+                    className="col-lg-12 tab-pane fade show active"  
+                    id="pills-transactions" 
                     role="tabpanel" 
                     aria-labelledby="transactions-tab"
                 >

@@ -10,7 +10,7 @@ import './App.css';
 // Child Components
 import Header from './components/Header';
 import { TransactionList } from './components/TransactionList';
-import { TransactionMakeup } from './components/TransactionMakeup';
+import { ExpenseOverview } from './components/ExpenseOverview';
 import { TransactionCharts } from './components/TransactionCharts';
 
 
@@ -39,7 +39,7 @@ class App extends Component {
                         id="RightPanel"
                         className="p-5 m-0"
                     >
-                        <TransactionMakeup />
+                        <ExpenseOverview />
 
                         <TransactionCharts />
                     </div>

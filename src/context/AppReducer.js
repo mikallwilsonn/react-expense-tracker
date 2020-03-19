@@ -30,6 +30,13 @@ export default ( state, action ) => {
                 ...state,
                 expensesTotal: parseFloat( state.expensesTotal - action.payload )
             }
+        case 'UPDATE_EXPENSE_TYPE_TOTAL':
+            const prevValue = state[action.payload.expenseType].amount;
+
+            return { 
+                ...state,
+                [action.payload.expenseType]amount : parseFloat( prevValue + action.payload )
+            }
         default:
             return state;
     }

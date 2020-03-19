@@ -8,16 +8,39 @@ import moment from 'moment';
 // ----
 // AddTransaction functional component
 export const AddTransaction = ({ formType }) => {
-
     const [ text, setText ] = useState( '' );
     const [ amount, setAmount ] = useState( 0 );
-    const [ expenseType, setExpenseType ]  = useState( 'income' );
+    const [ expenseType, setExpenseType ]  = useState( 'expenseBills' );
     const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
     const { 
-        addTransaction, updateIncomeTotal, updateExpensesTotal 
+        addTransaction, updateIncomeTotal, updateExpensesTotal, updateExpenseTypeTotal,
+        expenseBills, expenseRentMortgage, expenseShopping, expenseEntertainment, expenseDining 
     } = useContext( GlobalContext );
 
+    const expenseTypes = [
+        expenseBills, expenseRentMortgage, 
+        expenseShopping, expenseEntertainment,
+         expenseDining
+    ];
+
+
+    // Render Expense Types
+    const renderExpenseTypes = () => {
+        return expenseTypes.map( type => {
+            return (
+                <option
+                    key={ type.id }
+                    value={ type.id }
+                >
+                    { type.label }
+                </option>
+            );
+        });
+    }
+
+
+    // OnSubmit
     const onSubmit = ( event ) => {
         event.preventDefault();
 
@@ -45,9 +68,10 @@ export const AddTransaction = ({ formType }) => {
         addTransaction( newTransaction );
 
         if ( formType === 'income' ) {
-            updateIncomeTotal( parseInt( amount ));
+            updateIncomeTotal( parseFloat( amount ));
         } else {
-            updateExpensesTotal( parseInt( amount ));
+            updateExpensesTotal( parseFloat( amount ));
+            updateExpenseTypeTotal( expenseType,  amount );
         }
 
         setText( '' );
@@ -59,6 +83,7 @@ export const AddTransaction = ({ formType }) => {
     }
 
 
+    // Render Component
     return (
         <form 
             id="form" 
@@ -82,25 +107,7 @@ export const AddTransaction = ({ formType }) => {
                             className="form-control d-inline w-auto"
                             onChange={( event ) => setExpenseType( event.target.value )}
                         >
-                            <option value="bills">
-                                Bills
-                            </option>
-
-                            <option value="rent/mortage">
-                                Rent / Mortgage
-                            </option>
-
-                            <option value="shopping">
-                                Shopping
-                            </option>
-
-                            <option value="entertainment">
-                                Entertainment
-                            </option>
-
-                            <option value="dining">
-                                Dining
-                            </option>
+                            { renderExpenseTypes() }
                         </select>
                     </div>
 
@@ -134,5 +141,5 @@ export const AddTransaction = ({ formType }) => {
             </div>
 
         </form>
-    )
+    );
 }
