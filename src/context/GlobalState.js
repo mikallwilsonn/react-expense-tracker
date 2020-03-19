@@ -52,8 +52,34 @@ const initialState = {
         }
     ],
     incomeTotal: 1900,
-    expensesTotal: 200.93
+    expensesTotal: 200.93,
+    expenseBills: {
+        label: 'Bills',
+        id: 'expenseBills',
+        amount: 0
+    },
+    expenseRentMortgage: {
+        label: 'Rent / Mortgage',
+        id: 'expenseRentMortgage',
+        amount: 0
+    },
+    expenseShopping: {
+        label: 'Shopping',
+        id: 'expenseShopping',
+        amount: 0
+    },
+    expenseEntertainment: {
+        label: 'Entertainment',
+        id: 'expenseEntertainment',
+        amount: 0
+    },
+    expenseDining: {
+        label: 'Dining',
+        id: 'expenseDining',
+        amount: 0
+    }
 }
+
 
 
 export const GlobalContext = createContext( initialState );
@@ -111,6 +137,20 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
+    // Update Expense Type Total
+    function updateExpenseTypeTotal( expenseType, amount ) {
+
+        console.log(expenseType, amount);
+
+        dispatch({
+            type: 'UPDATE_EXPENSE_TYPE_TOTAL',
+            payload: {
+                expenseType,
+                amount
+            }
+        });
+    }
+
 
     // ----
     return (
@@ -119,12 +159,18 @@ export const GlobalProvider = ({ children }) => {
                 transactions: state.transactions,
                 incomeTotal: state.incomeTotal,
                 expensesTotal: state.expensesTotal,
+                expenseBills: state.expenseBills, 
+                expenseRentMortgage: state.expenseRentMortgage, 
+                expenseShopping: state.expenseShopping, 
+                expenseEntertainment: state.expenseEntertainment, 
+                expenseDining: state.expenseDining,
                 deleteTransaction,
                 addTransaction,
                 updateIncomeTotal,
                 updateExpensesTotal,
                 removeIncomeFromTotal, 
-                removeExpenseFromTotal 
+                removeExpenseFromTotal,
+                updateExpenseTypeTotal 
             }}
         >
             { children }
