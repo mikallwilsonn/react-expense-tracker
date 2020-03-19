@@ -10,7 +10,7 @@ export const TransactionList = () => {
     return (
         <ul 
             id="list" 
-            className="list p-0 m-0 mt-5"
+            className="list p-0 m-0 mt-5 pb-5"
         >
             { transactions.map( transaction  => (
                 <Transaction 

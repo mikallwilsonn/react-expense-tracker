@@ -14,17 +14,37 @@ import { AddTransaction } from './AddTransaction';
 class Header extends Component {
     constructor() {
         super();
-        this.state = { formToDisplay: null }
+        this.state = { 
+            initialClick: false,
+            formToDisplay: null 
+        }
     }
 
 
     // ----
     // Set Form To Display
     setFormToDisplay( type ) {
-        if ( type === this.state.formToDisplay ) {
+        const expenseButton = document.querySelector( '#AddExpenseButton' );
+        const incomeButton = document.querySelector( '#AddIncomeButton' );
+
+        if ( type === this.state.formToDisplay && this.state.initialClick === true ) {
             this.setState({ formToDisplay: null });
+
+            expenseButton.style.opacity = 1;
+            incomeButton.style.opacity = 1;
         } else {
-            this.setState({ formToDisplay: type });
+            this.setState({ 
+                formToDisplay: type, 
+                initialClick: true 
+            });
+
+            if ( this.state.formToDisplay === 'income' ) {
+                incomeButton.style.opacity = 1;
+                expenseButton.style.opacity = 0.5;
+            } else {
+                expenseButton.style.opacity = 1;
+                incomeButton.style.opacity = 0.5;
+            }
         }
     }
 
@@ -33,7 +53,7 @@ class Header extends Component {
     // Render Transaction Form
     renderTransactionForm() {
         if ( this.state.formToDisplay !== null ) {
-            return <AddTransaction formType={this.state.formToDisplay} />;
+            return <AddTransaction formType={ this.state.formToDisplay } />;
         } else {
             return '';
         }

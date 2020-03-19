@@ -59,11 +59,11 @@ export const Transaction = ({ transaction }) => {
             <div className="transaction__details row justify-content-between align-items-center m-0 p-0">
                 <div className="d-flex flex-column justify-content-center pl-5">
                     <span className="transaction__details--date font-regular">
-                        { transaction.date } { transaction.expenseType ? `- ${transaction.expenseType}` : '' }
+                        { transaction.date } 
                     </span>
 
                     <p className="transaction__details--label h4 font-bold">
-                        { transaction.text }
+                        { transaction.text } <span className="transaction__details--date font-regular h6">{ transaction.expenseType ? `- ${transaction.expenseType}` : '' }</span>
                     </p>
                 </div>
 
