@@ -12,9 +12,10 @@ const today = moment().format( "dddd, MMMM Do YYYY" );
 const initialState = {
     transactions: [
         {
-            amount: 175.86,
+            amount: 175.80,
             transactionType: 'expense',
-            expenseType: 'bills',
+            expenseType: 'Bills',
+            expenseTypeId: 'expenseBills',
             text: 'Utility Bill',
             date: today,
             id: 1
@@ -27,56 +28,86 @@ const initialState = {
             id: 2
         },
         {
-            amount: 6.59,
+            amount: 1200,
             transactionType: 'expense',
-            expenseType: 'dining',
+            expenseType: 'Rent / Mortgage',
+            expenseTypeId: 'expenseRentMortgage',
+            text: 'Paid Rent',
+            date: today,
+            id: 6
+        },
+        {
+            amount: 6.50,
+            transactionType: 'expense',
+            expenseType: 'Dining',
+            expenseTypeId: 'expenseDining',
             text: 'John Smith\'s Diner - Breakfast',
             date: today,
             id: 3
         },
         {
-            amount: 14.99,
+            amount: 14.75,
             transactionType: 'expense',
-            expenseType: 'entertainment',
+            expenseType: 'Entertainment',
+            expenseTypeId: 'expenseEntertainment',
             text: 'Streaming Subscription',
             date: today,
             id: 4
         },
         {
-            amount: 3.49,
+            amount: 250,
+            transactionType: 'income',
+            text: 'Sold old CDs',
+            date: today,
+            id: 8
+        },
+        {
+            amount: 3.50,
             transactionType: 'expense',
-            expenseType: 'dining',
+            expenseType: 'Dining',
+            expenseTypeId: 'expenseDining',
             text: 'CoffeeExample - Supreme Coffee',
             date: today,
             id: 5
+        },
+        {
+            amount: 125.00,
+            transactionType: 'expense',
+            expenseType: 'Shopping',
+            expenseTypeId: 'expenseShopping',
+            text: 'New Clothes',
+            date: today,
+            id: 7
         }
     ],
-    incomeTotal: 1900,
-    expensesTotal: 200.93,
-    expenseBills: {
-        label: 'Bills',
-        id: 'expenseBills',
-        amount: 0
-    },
-    expenseRentMortgage: {
-        label: 'Rent / Mortgage',
-        id: 'expenseRentMortgage',
-        amount: 0
-    },
-    expenseShopping: {
-        label: 'Shopping',
-        id: 'expenseShopping',
-        amount: 0
-    },
-    expenseEntertainment: {
-        label: 'Entertainment',
-        id: 'expenseEntertainment',
-        amount: 0
-    },
-    expenseDining: {
-        label: 'Dining',
-        id: 'expenseDining',
-        amount: 0
+    incomeTotal: 2150,
+    expensesTotal: 1524.75,
+    expenseTypes: {
+        'expenseBills': {
+            label: 'Bills',
+            id: 'expenseBills',
+            amount: 175.80
+        },
+        'expenseRentMortgage': {
+            label: 'Rent / Mortgage',
+            id: 'expenseRentMortgage',
+            amount: 1200
+        },
+        'expenseShopping': {
+            label: 'Shopping',
+            id: 'expenseShopping',
+            amount: 125.00
+        },
+        'expenseEntertainment': {
+            label: 'Entertainment',
+            id: 'expenseEntertainment',
+            amount: 14.75
+        },
+        'expenseDining': {
+            label: 'Dining',
+            id: 'expenseDining',
+            amount: 10.00
+        }
     }
 }
 
@@ -138,15 +169,14 @@ export const GlobalProvider = ({ children }) => {
     }
 
     // Update Expense Type Total
-    function updateExpenseTypeTotal( expenseType, amount ) {
-
-        console.log(expenseType, amount);
+    function updateExpenseTypeTotal( expenseType, amount, op ) {
 
         dispatch({
             type: 'UPDATE_EXPENSE_TYPE_TOTAL',
             payload: {
-                expenseType,
-                amount
+                expenseType: expenseType,
+                amount: amount,
+                op: op
             }
         });
     }
@@ -159,11 +189,7 @@ export const GlobalProvider = ({ children }) => {
                 transactions: state.transactions,
                 incomeTotal: state.incomeTotal,
                 expensesTotal: state.expensesTotal,
-                expenseBills: state.expenseBills, 
-                expenseRentMortgage: state.expenseRentMortgage, 
-                expenseShopping: state.expenseShopping, 
-                expenseEntertainment: state.expenseEntertainment, 
-                expenseDining: state.expenseDining,
+                expenseTypes: state.expenseTypes,
                 deleteTransaction,
                 addTransaction,
                 updateIncomeTotal,

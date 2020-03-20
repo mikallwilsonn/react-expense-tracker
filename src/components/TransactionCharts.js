@@ -15,13 +15,30 @@ import { Doughnut } from 'react-chartjs-2';
 export const TransactionCharts = () => {
     const { incomeTotal, expensesTotal } = useContext( GlobalContext );
 
+    const { 
+        expenseBills, expenseRentMortgage, expenseShopping, 
+        expenseEntertainment, expenseDining 
+    } = useContext( GlobalContext ).expenseTypes;
+
 
     // Render Transactions Chart
     const renderTransactionsChart = () => {
-        let data = [ 250, 1050, 125.50, 75, 45 ];
-        let labels = [ 'Bills', 'Rent / Mortgage', 'Shopping', 'Entertainment', 'Dining' ];
-        let backgroundColor = [ '#FF3C41', '#AE63E4', '#FCD000', '#0EBEFF', '#707070' ];
+        let data = [];
+        let labels = [];
 
+        const expenses = [
+            expenseBills, expenseRentMortgage, 
+            expenseShopping, expenseEntertainment,
+            expenseDining
+        ];
+
+        expenses.forEach( exp => {
+            data.push( exp.amount );
+            labels.push( exp.label )
+        });
+
+
+        let backgroundColor = [ '#FF3C41', '#AE63E4', '#FCD000', '#0EBEFF', '#707070' ];
 
         const chartData = {
             labels, 

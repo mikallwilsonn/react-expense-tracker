@@ -31,11 +31,20 @@ export default ( state, action ) => {
                 expensesTotal: parseFloat( state.expensesTotal - action.payload )
             }
         case 'UPDATE_EXPENSE_TYPE_TOTAL':
-            const prevValue = state[action.payload.expenseType].amount;
+            let newExpenseTypes = state.expenseTypes;
+            const previousAmount = newExpenseTypes[action.payload.expenseType].amount;
+
+            if ( action.op === 'inc' ) {
+                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount + action.payload.amount );
+            } else {
+                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount - action.payload.amount );
+            }
+
+
 
             return { 
                 ...state,
-                [action.payload.expenseType]amount : parseFloat( prevValue + action.payload )
+                expenseTypes: newExpenseTypes
             }
         default:
             return state;

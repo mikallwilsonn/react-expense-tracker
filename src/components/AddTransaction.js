@@ -14,9 +14,13 @@ export const AddTransaction = ({ formType }) => {
     const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
     const { 
-        addTransaction, updateIncomeTotal, updateExpensesTotal, updateExpenseTypeTotal,
-        expenseBills, expenseRentMortgage, expenseShopping, expenseEntertainment, expenseDining 
+        addTransaction, updateIncomeTotal, updateExpensesTotal, updateExpenseTypeTotal
     } = useContext( GlobalContext );
+
+    const { 
+        expenseBills, expenseRentMortgage, expenseShopping, 
+        expenseEntertainment, expenseDining 
+    } = useContext( GlobalContext ).expenseTypes;
 
     const expenseTypes = [
         expenseBills, expenseRentMortgage, 
@@ -71,7 +75,7 @@ export const AddTransaction = ({ formType }) => {
             updateIncomeTotal( parseFloat( amount ));
         } else {
             updateExpensesTotal( parseFloat( amount ));
-            updateExpenseTypeTotal( expenseType,  amount );
+            updateExpenseTypeTotal( expenseType,  amount, 'inc' );
         }
 
         setText( '' );
