@@ -16,7 +16,7 @@ export const ExpenseOverview = () => {
     const { 
         expenseBills, expenseRentMortgage, expenseShopping, 
         expenseEntertainment, expenseDining 
-    } = useContext( GlobalContext );
+    } = useContext( GlobalContext ).expenseTypes;
 
     const overview = [
         expenseBills, expenseRentMortgage, 

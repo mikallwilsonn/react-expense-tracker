@@ -16,7 +16,7 @@ import { CreditIcon } from './CreditIcon';
 export const Transaction = ({ transaction }) => {
 
     const { 
-        deleteTransaction, removeIncomeFromTotal, removeExpenseFromTotal 
+        deleteTransaction, removeIncomeFromTotal, removeExpenseFromTotal, updateExpenseTypeTotal 
     } = useContext( GlobalContext );
 
     let sign;
@@ -45,6 +45,7 @@ export const Transaction = ({ transaction }) => {
             removeIncomeFromTotal( parseFloat( transaction.amount ));
         } else {
             removeExpenseFromTotal( parseFloat( transaction.amount ));
+            updateExpenseTypeTotal( transaction.expenseTypeId, transaction.amount, 'dec' );
         }
     }
 
@@ -63,7 +64,7 @@ export const Transaction = ({ transaction }) => {
                     </span>
 
                     <p className="transaction__details--label h4 font-bold">
-                        { transaction.text } <span className="transaction__details--date font-regular h6">{ transaction.expenseType ? `- ${transaction.expenseType}` : '' }</span>
+                        { transaction.text } <span className="transaction__details--date font-regular h6">{ transaction.expenseType ? `- ${transaction.expenseType }` : '' }</span>
                     </p>
                 </div>
 
