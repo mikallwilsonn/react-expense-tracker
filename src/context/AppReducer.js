@@ -10,41 +10,47 @@ export default ( state, action ) => {
                 ...state,
                 transactions: [ action.payload, ...state.transactions ]
             }
-        case 'UPDATE_INCOME_TOTAL':
-            return {
-                ...state,
-                incomeTotal: parseFloat( state.incomeTotal + action.payload )
-            }
-        case 'UPDATE_EXPENSES_TOTAL':
-            return {
-                ...state,
-                expensesTotal: parseFloat( state.expensesTotal + action.payload )
-            }
-        case 'REMOVE_INCOME_FROM_TOTAL':
-            return {
-                ...state,
-                incomeTotal: parseFloat( state.incomeTotal - action.payload )
-            }
-        case 'REMOVE_EXPENSE_FROM_TOTAL':
-            return {
-                ...state,
-                expensesTotal: parseFloat( state.expensesTotal - action.payload )
+        case 'UPDATE_INCOME_OR_EXPENSES_TOTAL':
+            if ( action.payload.op === 'inc' ) {
+                return {
+                    ...state,
+                    [action.payload.type]: parseFloat( state[action.payload.type] + action.payload.amount )
+                }
+            } else if ( action.payload.op === 'dec' ) {
+                return {
+                    ...state,
+                    [action.payload.type]: parseFloat( state[action.payload.type] - action.payload.amount )
+                }
+            } else if ( action.payload.op === 'clear' ) {
+                return {
+                    ...state,
+                    [action.payload.type]: 0
+                }
+            } else {
+                throw Error( `Unknown action operation provided: ${ action.payload.op }` );
             }
         case 'UPDATE_EXPENSE_TYPE_TOTAL':
             let newExpenseTypes = state.expenseTypes;
             const previousAmount = newExpenseTypes[action.payload.expenseType].amount;
 
-            if ( action.op === 'inc' ) {
+            if ( action.payload.op === 'inc' ) {
                 newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount + action.payload.amount );
-            } else {
+            } else if ( action.payload.op === 'dec' ) {
                 newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount - action.payload.amount );
+            } else if ( action.payload.op === 'clear' ) {
+                newExpenseTypes[action.payload.expenseType].amount = 0;
+            } else {
+                throw Error( `Unknown action operation provided: ${ action.payload.op }` );
             }
-
-
 
             return { 
                 ...state,
                 expenseTypes: newExpenseTypes
+            }
+        case 'CLEAR_TRANSACTIONS':
+            return {
+                ...state,
+                transactions: []
             }
         default:
             return state;

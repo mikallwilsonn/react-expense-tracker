@@ -14,7 +14,7 @@ export const AddTransaction = ({ formType }) => {
     const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
     const { 
-        addTransaction, updateIncomeTotal, updateExpensesTotal, updateExpenseTypeTotal
+        addTransaction, updateIncomeOrExpenses, updateExpenseTypeTotal
     } = useContext( GlobalContext );
 
     const { 
@@ -72,9 +72,9 @@ export const AddTransaction = ({ formType }) => {
         addTransaction( newTransaction );
 
         if ( formType === 'income' ) {
-            updateIncomeTotal( parseFloat( amount ));
+            updateIncomeOrExpenses( 'incomeTotal', parseFloat( amount ), 'inc' );
         } else {
-            updateExpensesTotal( parseFloat( amount ));
+            updateIncomeOrExpenses( 'expensesTotal', parseFloat( amount ), 'inc' );
             updateExpenseTypeTotal( expenseType,  amount, 'inc' );
         }
 

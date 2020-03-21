@@ -68,6 +68,10 @@ button:hover { transform: scale( 1.025 ); }
   background: linear-gradient(to right, var( --purple-light ) 0%, var( --purple ) 100%);
 }
 
+.bg-dark-gradient {
+  background: linear-gradient(to right, var( --dark ) 0%, var( --black ) 100%);
+}
+
 .text-shadow {
   text-shadow: 0px 2px 3px rgba( 112, 112, 112, 0.5 );
 }

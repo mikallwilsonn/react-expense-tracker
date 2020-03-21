@@ -57,7 +57,7 @@ const initialState = {
         {
             amount: 250,
             transactionType: 'income',
-            text: 'Sold old CDs',
+            text: 'Sold some old CDs',
             date: today,
             id: 8
         },
@@ -136,35 +136,23 @@ export const GlobalProvider = ({ children }) => {
     }
 
 
-    // Update Income total
-    function updateIncomeTotal( amount ) {
+    // Clear All Transactiona
+    function clearTransactions() {
         dispatch({
-            type: 'UPDATE_INCOME_TOTAL',
-            payload: amount
+            type: 'CLEAR_TRANSACTIONS',
+            payload: true
         });
     }
 
-    // Update Expenses total
-    function updateExpensesTotal( amount ) {
+    // Update Income or Expenses Totals
+    function updateIncomeOrExpenses( type, amount, op ) {
         dispatch({
-            type: 'UPDATE_EXPENSES_TOTAL',
-            payload: amount
-        });
-    }
-
-    // Remove Income From Total
-    function removeIncomeFromTotal( amount ) {
-        dispatch({
-            type: 'REMOVE_INCOME_FROM_TOTAL',
-            payload: amount
-        });
-    }
-
-    // Remove Expense From Total
-    function removeExpenseFromTotal( amount ) {
-        dispatch({
-            type: 'REMOVE_EXPENSE_FROM_TOTAL',
-            payload: amount
+            type: 'UPDATE_INCOME_OR_EXPENSES_TOTAL',
+            payload: {
+                amount: amount,
+                type: type,
+                op: op
+            }
         });
     }
 
@@ -192,11 +180,9 @@ export const GlobalProvider = ({ children }) => {
                 expenseTypes: state.expenseTypes,
                 deleteTransaction,
                 addTransaction,
-                updateIncomeTotal,
-                updateExpensesTotal,
-                removeIncomeFromTotal, 
-                removeExpenseFromTotal,
-                updateExpenseTypeTotal 
+                updateIncomeOrExpenses,
+                updateExpenseTypeTotal,
+                clearTransactions 
             }}
         >
             { children }

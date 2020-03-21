@@ -16,7 +16,7 @@ import { CreditIcon } from './CreditIcon';
 export const Transaction = ({ transaction }) => {
 
     const { 
-        deleteTransaction, removeIncomeFromTotal, removeExpenseFromTotal, updateExpenseTypeTotal 
+        deleteTransaction, updateIncomeOrExpenses, updateExpenseTypeTotal 
     } = useContext( GlobalContext );
 
     let sign;
@@ -42,9 +42,9 @@ export const Transaction = ({ transaction }) => {
         deleteTransaction( transaction.id );
 
         if ( transaction.transactionType === 'income' ) {
-            removeIncomeFromTotal( parseFloat( transaction.amount ));
+            updateIncomeOrExpenses( 'incomeTotal', parseFloat( transaction.amount ), 'dec' );
         } else {
-            removeExpenseFromTotal( parseFloat( transaction.amount ));
+            updateIncomeOrExpenses( 'expensesTotal', parseFloat( transaction.amount ), 'dec' );
             updateExpenseTypeTotal( transaction.expenseTypeId, transaction.amount, 'dec' );
         }
     }

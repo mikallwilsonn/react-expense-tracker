@@ -14,18 +14,33 @@ export const TransactionList = () => {
 
     const { transactions } = useContext( GlobalContext );
 
+
+    // ----
+    // Check if there are transactions, if so render them
+    const renderTransactions = () => {
+        if ( transactions.length < 1 ) {
+            return (
+                <p>You currently do not have any transaction to show. Why not add one now?</p>
+            );
+        } else {
+            return transactions.map( transaction => {
+                return (
+                    <Transaction 
+                        key={ transaction.id } 
+                        transaction={ transaction } 
+                    />
+                )
+            });
+        
+        }
+    }
+
     return (
         <ul 
             id="list" 
             className="list p-0 m-0 mt-5 pb-5"
         >
-            { transactions.map( transaction  => (
-                <Transaction 
-                    key={ transaction.id } 
-                    transaction={ transaction } 
-                />
-            )) }
-
+            { renderTransactions() }
       </ul>
     )
 }
