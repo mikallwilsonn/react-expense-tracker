@@ -59,12 +59,22 @@ export const AddTransaction = ({ formType }) => {
                 amount: parseInt( amount )
             }
         } else {
+            let transactionExpenseType;
+            
+            expenseTypes.forEach( expense => {
+                if ( expense.id === expenseType ) {
+                    transactionExpenseType = expense;
+                }
+            });
+
             newTransaction = {
                 id: Math.random().toString(16).slice(2),
                 transactionType: 'expense',
                 text,
                 date,
-                expenseType,
+                expenseType: transactionExpenseType.label,
+                expenseTypeId: transactionExpenseType.id,
+                
                 amount: parseInt( amount )
             }
         }
@@ -75,14 +85,14 @@ export const AddTransaction = ({ formType }) => {
             updateIncomeOrExpenses( 'incomeTotal', parseFloat( amount ), 'inc' );
         } else {
             updateIncomeOrExpenses( 'expensesTotal', parseFloat( amount ), 'inc' );
-            updateExpenseTypeTotal( expenseType,  amount, 'inc' );
+            updateExpenseTypeTotal( newTransaction.expenseTypeId,  amount, 'inc' );
         }
 
         setText( '' );
         setAmount( 0 );
 
         if ( formType === 'expense') {
-            setExpenseType( 'bills' )
+            setExpenseType( 'expenseBills' )
         }
     }
 
