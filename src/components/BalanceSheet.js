@@ -42,7 +42,7 @@ const BalanceSheet = () => {
                     </td>
 
                     <td className="text-black font-bold">
-                    { currencyFormatter( (incomeTotal - expensesTotal) ) }
+                    { currencyFormatter( parseFloat( incomeTotal - expensesTotal )) }
                     </td>
                 </tr>
 

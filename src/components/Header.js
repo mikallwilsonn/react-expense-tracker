@@ -2,11 +2,11 @@
 // Dependencies
 import React, { Component } from 'react';
 
-
 // ----
 // Child Components
 import BalanceSheet from './BalanceSheet';
 import { AddTransaction } from './AddTransaction';
+import { ClearTransactions } from './ClearTransactions';
 
 
 // ----
@@ -84,11 +84,13 @@ class Header extends Component {
 
                     <button
                         id="AddExpenseButton"
-                        className="bg-red-gradient text-white text-uppercase text-shadow font-regular"
+                        className="bg-red-gradient text-white text-uppercase text-shadow font-regular mr-2"
                         onClick={() => this.setFormToDisplay( 'expense' )}
                     >
                         Add Expense
                     </button>
+
+                    <ClearTransactions />
                 </div>
 
                 <div className="col-lg-12 p-0 m-0">
