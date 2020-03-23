@@ -149,8 +149,8 @@ export const GlobalProvider = ({ children }) => {
         dispatch({
             type: 'UPDATE_INCOME_OR_EXPENSES_TOTAL',
             payload: {
-                amount: amount,
                 type: type,
+                amount: amount,
                 op: op
             }
         });

@@ -56,7 +56,7 @@ export const AddTransaction = ({ formType }) => {
                 transactionType: 'income',
                 text,
                 date,
-                amount: parseInt( amount )
+                amount: parseFloat( amount )
             }
         } else {
             let transactionExpenseType;
@@ -75,7 +75,7 @@ export const AddTransaction = ({ formType }) => {
                 expenseType: transactionExpenseType.label,
                 expenseTypeId: transactionExpenseType.id,
                 
-                amount: parseInt( amount )
+                amount: parseFloat( amount )
             }
         }
 
@@ -90,10 +90,6 @@ export const AddTransaction = ({ formType }) => {
 
         setText( '' );
         setAmount( 0 );
-
-        if ( formType === 'expense') {
-            setExpenseType( 'expenseBills' )
-        }
     }
 
 

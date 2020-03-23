@@ -14,12 +14,12 @@ export default ( state, action ) => {
             if ( action.payload.op === 'inc' ) {
                 return {
                     ...state,
-                    [action.payload.type]: parseFloat( state[action.payload.type] + action.payload.amount )
+                    [action.payload.type]: parseFloat( state[action.payload.type] ) + parseFloat( action.payload.amount )
                 }
             } else if ( action.payload.op === 'dec' ) {
                 return {
                     ...state,
-                    [action.payload.type]: parseFloat( state[action.payload.type] - action.payload.amount )
+                    [action.payload.type]: parseFloat( state[action.payload.type] ) - parseFloat( action.payload.amount )
                 }
             } else if ( action.payload.op === 'clear' ) {
                 return {
@@ -31,12 +31,12 @@ export default ( state, action ) => {
             }
         case 'UPDATE_EXPENSE_TYPE_TOTAL':
             let newExpenseTypes = state.expenseTypes;
-            const previousAmount = newExpenseTypes[action.payload.expenseType].amount;
+            const previousAmount = parseFloat( newExpenseTypes[action.payload.expenseType].amount );
 
             if ( action.payload.op === 'inc' ) {
-                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount + action.payload.amount );
+                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount ) + parseFloat( action.payload.amount );
             } else if ( action.payload.op === 'dec' ) {
-                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount - action.payload.amount );
+                newExpenseTypes[action.payload.expenseType].amount = parseFloat( previousAmount ) - parseFloat( action.payload.amount );
             } else if ( action.payload.op === 'clear' ) {
                 newExpenseTypes[action.payload.expenseType].amount = 0;
             } else {
