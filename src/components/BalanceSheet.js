@@ -22,7 +22,7 @@ const BalanceSheet = () => {
                     </td>
 
                     <td className="text-green font-bold">
-                        { currencyFormatter( incomeTotal ) }
+                        { currencyFormatter( parseFloat( incomeTotal )) }
                     </td>
                 </tr>
 
@@ -32,7 +32,7 @@ const BalanceSheet = () => {
                     </td>
 
                     <td className="text-red font-bold">
-                        { currencyFormatter( expensesTotal ) }
+                        { currencyFormatter( parseFloat( expensesTotal )) }
                     </td>
                 </tr>
 
@@ -42,7 +42,10 @@ const BalanceSheet = () => {
                     </td>
 
                     <td className="text-black font-bold">
-                    { currencyFormatter( parseFloat( incomeTotal - expensesTotal )) }
+                    { currencyFormatter( 
+                        ( parseFloat( incomeTotal ) - parseFloat( expensesTotal ) )
+                      ) 
+                    }
                     </td>
                 </tr>
 
