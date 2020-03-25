@@ -100,6 +100,15 @@ export const AddTransaction = ({ formType }) => {
             className="col-lg-12 row justify-content-between align-items-center p-0 m-0 mt-4"
             onSubmit={ onSubmit }
         >
+            <div className="col-lg-12 p-0 m-0 mb-1 d-block font-regular text-dark">
+                {
+                    formType === 'income' ?
+                        'New Income Transaction'
+                    :
+                        'New Expense Transaction'
+                }
+            </div>
+
             <div className="m-0 p-0">
                 <input 
                     type="text" 

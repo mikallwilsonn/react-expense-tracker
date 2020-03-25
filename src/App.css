@@ -120,6 +120,11 @@ button:hover { transform: scale( 1.025 ); }
 #BalanceSheet {}
 */
 
+#AddIncomeButton:hover,
+#AddExpenseButton:hover {
+  opacity: 1 !important;
+}
+
 #BalanceSheet tr { 
   width: 100%; 
   display: grid;
