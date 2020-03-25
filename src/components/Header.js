@@ -14,37 +14,19 @@ import { ClearTransactions } from './ClearTransactions';
 class Header extends Component {
     constructor() {
         super();
-        this.state = { 
-            initialClick: false,
-            formToDisplay: null 
-        }
+        this.state = { formToDisplay: null }
     }
 
 
     // ----
     // Set Form To Display
     setFormToDisplay( type ) {
-        const expenseButton = document.querySelector( '#AddExpenseButton' );
-        const incomeButton = document.querySelector( '#AddIncomeButton' );
-
-        if ( type === this.state.formToDisplay && this.state.initialClick === true ) {
+        if ( type === this.state.formToDisplay ) {
             this.setState({ formToDisplay: null });
-
-            expenseButton.style.opacity = 1;
-            incomeButton.style.opacity = 1;
         } else {
             this.setState({ 
                 formToDisplay: type, 
-                initialClick: true 
             });
-
-            if ( this.state.formToDisplay === 'income' ) {
-                incomeButton.style.opacity = 1;
-                expenseButton.style.opacity = 0.5;
-            } else {
-                expenseButton.style.opacity = 1;
-                incomeButton.style.opacity = 0.5;
-            }
         }
     }
 
