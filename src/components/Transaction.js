@@ -57,7 +57,7 @@ export const Transaction = ({ transaction }) => {
                 { renderTransactionIcon() }
             </div>
 
-            <div className="transaction__details row justify-content-between align-items-center m-0 p-0">
+            <div className="transaction__details row justify-content-between align-items-center m-0 p-0 flex-nowrap">
                 <div className="d-flex flex-column justify-content-center pl-5">
                     <span className="transaction__details--date font-regular">
                         { transaction.date } 
@@ -68,7 +68,7 @@ export const Transaction = ({ transaction }) => {
                     </p>
                 </div>
 
-                <div className="row align-items-center m-0 p-0 pr-5">
+                <div className="row align-items-center m-0 p-0 pr-5 flex-nowrap">
                     <span className={`transaction__amount transaction__amount-${transaction.transactionType} p-0 m-0 mr-5 h5 font-bold`}>
                         { sign }{ currencyFormatter( transaction.amount ) }
                     </span>
