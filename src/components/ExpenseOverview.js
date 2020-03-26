@@ -48,7 +48,10 @@ export const ExpenseOverview = () => {
 
     // Render Component
     return (
-        <div className="col-lg-12 p-0 m-0">
+        <div 
+            id="ExpenseOverview"
+            className="col-lg-12 p-0 m-0"
+        >
             <h2 className="text-dark font-medium h4">
                 Expense Overview
             </h2>

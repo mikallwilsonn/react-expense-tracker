@@ -36,7 +36,7 @@ export const ClearTransactions = () => {
         return (
             <button
                 id="ClearDemoDataButton"
-                className="bg-dark-gradient text-white text-uppercase text-shadow font-regular"
+                className="bg-dark-gradient text-white text-uppercase text-shadow font-regular mr-2"
                 onClick={() => handleClearTransactions() }
             >
                 Clear Transactions

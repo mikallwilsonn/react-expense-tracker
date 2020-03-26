@@ -22,6 +22,11 @@ import { GlobalProvider } from './context/GlobalState';
 // ----
 // App class component
 class App extends Component {
+
+    hideOverview() {
+        document.querySelector( '#RightPanel' ).classList.remove( 'slide-in' );
+    }
+
     render() {
         return (
             <GlobalProvider>
@@ -39,6 +44,14 @@ class App extends Component {
                         id="RightPanel"
                         className="p-5 m-0"
                     >
+                        <button
+                            className="bg-blue-gradient text-white text-uppercase text-shadow font-regular d-inline-block"
+                            id="HideOverviewButton"
+                            onClick={() => this.hideOverview()}
+                        >
+                            Close Overview
+                        </button>
+
                         <ExpenseOverview />
 
                         <TransactionCharts />

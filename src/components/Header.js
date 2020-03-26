@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import BalanceSheet from './BalanceSheet';
 import { AddTransaction } from './AddTransaction';
 import { ClearTransactions } from './ClearTransactions';
+import { ViewOverviewButton } from './ViewOverviewButton';
 
 
 // ----
@@ -55,7 +56,10 @@ class Header extends Component {
                     <BalanceSheet />
                 </div>
 
-                <div className="col-lg-12 p-0 m-0">
+                <div 
+                    id="TransactionButtonWrapper"
+                    className="col-lg-12 p-0 m-0 mt-3"
+                >
                     <button 
                         id="AddIncomeButton"
                         className="bg-green-gradient text-white text-uppercase text-shadow mr-2 font-regular"
@@ -73,6 +77,8 @@ class Header extends Component {
                     </button>
 
                     <ClearTransactions />
+
+                    <ViewOverviewButton />
                 </div>
 
                 <div className="col-lg-12 p-0 m-0">
