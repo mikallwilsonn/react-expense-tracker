@@ -49,9 +49,16 @@ class Header extends Component {
         return (
             <header className="col-lg-12 d-flex flex-column p-0 m-0">
                 <div className="col-lg-12 row justify-content-between m-0 p-0">
-                    <h1 className="text-dark font-bold">
-                        Expense Tracker
-                    </h1> 
+                    <div>
+                        <h1 className="text-dark font-bold">
+                            Expense Tracker
+                        </h1>
+
+                        <span className="text-dark font-regular">
+                            Created by <a href="http://github.com/mikallwilsonn" target="_blank" rel="noopener noreferrer">Michael R. Wilson</a>.
+                        </span> 
+                    </div>
+
 
                     <BalanceSheet />
                 </div>
