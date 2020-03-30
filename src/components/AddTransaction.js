@@ -9,7 +9,7 @@ import moment from 'moment';
 // AddTransaction functional component
 export const AddTransaction = ({ formType }) => {
     const [ text, setText ] = useState( '' );
-    const [ amount, setAmount ] = useState( 0 );
+    const [ amount, setAmount ] = useState( 0.00 );
     const [ expenseType, setExpenseType ]  = useState( 'expenseBills' );
     const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
@@ -112,9 +112,13 @@ export const AddTransaction = ({ formType }) => {
             <div className="m-0 p-0">
                 <input 
                     type="text" 
-                    placeholder="Enter text..." 
+                    placeholder="Transaction label" 
                     value={ text } 
                     onChange={ ( event ) => setText( event.target.value )}
+                    aria-required={ true }
+                    tabIndex={ 0 }
+                    aria-label="Transaction label"
+                    required
                 />
             </div>
 
@@ -125,6 +129,8 @@ export const AddTransaction = ({ formType }) => {
                         <select 
                             className="form-control d-inline w-auto"
                             onChange={( event ) => setExpenseType( event.target.value )}
+                            aria-label="Expense Type"
+                            tabIndex={ 0 }
                         >
                             { renderExpenseTypes() }
                         </select>
@@ -138,9 +144,13 @@ export const AddTransaction = ({ formType }) => {
                 <input 
                     className="m-0"
                     type="number"  
-                    placeholder="Enter amount..." 
+                    placeholder="Transaction amount" 
                     value={ amount } 
                     onChange={ ( event ) => setAmount( event.target.value )}
+                    aria-required={ true }
+                    tabIndex={ 0 }
+                    aria-label="Transaction amount"
+                    required
                 />
             </div>
 
@@ -150,11 +160,19 @@ export const AddTransaction = ({ formType }) => {
                     placeholder="Date of Transaction" 
                     value={ date } 
                     onChange={ ( event ) => setDate( event.target.value )}
+                    aria-required={ true }
+                    tabIndex={ 0 }
+                    aria-label="Date of Transaction"
+                    required
                 />
             </div>
 
             <div className="m-0 p-0">
-                <button className="m-0 bg-purple-gradient text-uppercase text-white text-nowrap">
+                <button 
+                    aria-label={`Record ${ formType }`}
+                    tabIndex={ 0 }
+                    className="m-0 bg-purple-gradient text-uppercase text-white text-nowrap"
+                >
                     record { formType }
                 </button>
             </div>

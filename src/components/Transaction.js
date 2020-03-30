@@ -76,12 +76,15 @@ export const Transaction = ({ transaction }) => {
                     <button 
                         className="transaction__delete-button p-0 m-0 row justify-content-center align-items-center"
                         onClick={() => handleTransactionDeletion( transaction.id )}
+                        tabIndex={ 0 }
+                        aria-label={`Delete transaction: ${ transaction.text }`}
                     >
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="500" 
                             height="500" 
                             viewBox="0 0 500 500"
+                            role="img"
                         >
                             <path 
                                 id="close" 

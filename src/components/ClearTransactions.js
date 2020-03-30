@@ -21,6 +21,7 @@ export const ClearTransactions = () => {
     ];
 
 
+    // Clearing all transactions and totals
     const handleClearTransactions = () => {
         clearTransactions();
 
@@ -32,12 +33,15 @@ export const ClearTransactions = () => {
         }); 
     }
 
+    // Returning the component
     if ( transactions.length >= 1 ) {
         return (
             <button
                 id="ClearDemoDataButton"
                 className="bg-dark-gradient text-white text-uppercase text-shadow font-regular mr-2"
                 onClick={() => handleClearTransactions() }
+                aria-label="Clear all transactions"
+                tabIndex={ 0 }
             >
                 Clear Transactions
             </button>

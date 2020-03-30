@@ -48,6 +48,8 @@ class App extends Component {
                             className="bg-blue-gradient text-white text-uppercase text-shadow font-regular d-inline-block"
                             id="HideOverviewButton"
                             onClick={() => this.hideOverview()}
+                            tabIndex={ 0 }
+                            aria-label="Hide transactions overview"
                         >
                             Close Overview
                         </button>

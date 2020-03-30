@@ -71,6 +71,8 @@ class Header extends Component {
                         id="AddIncomeButton"
                         className="bg-green-gradient text-white text-uppercase text-shadow mr-2 font-regular"
                         onClick={() => this.setFormToDisplay( 'income' )}
+                        tabIndex={ 0 }
+                        aria-label="Add new income transaction"
                     >
                         Add Income
                     </button>
@@ -79,6 +81,8 @@ class Header extends Component {
                         id="AddExpenseButton"
                         className="bg-red-gradient text-white text-uppercase text-shadow font-regular mr-2"
                         onClick={() => this.setFormToDisplay( 'expense' )}
+                        tabIndex={ 0 }
+                        aria-label="Add new expense transaction"
                     >
                         Add Expense
                     </button>

@@ -6,10 +6,6 @@ import currencyFormatter from '../utils/currencyFormatter';
 
 
 // ----
-// Child Components
-
-
-// ----
 // ExpenseOverview functional component
 export const ExpenseOverview = () => {
 
@@ -43,7 +39,6 @@ export const ExpenseOverview = () => {
             );
         });
     }
-    
 
 
     // Render Component
