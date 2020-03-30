@@ -1,5 +1,10 @@
+// ----
+// Dependencies
 import React from 'react';
 
+
+// ----
+// CreditIcon functional component
 export const CreditIcon = () => {
     return (
         <svg 

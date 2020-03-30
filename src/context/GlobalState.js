@@ -112,9 +112,10 @@ const initialState = {
 }
 
 
-
+// Creating context
 export const GlobalContext = createContext( initialState );
 
+// Creating the Provider to distribute initial state and reducer actions
 export const GlobalProvider = ({ children }) => {
     const [ state, dispatch ] = useReducer( AppReducer, initialState );
 

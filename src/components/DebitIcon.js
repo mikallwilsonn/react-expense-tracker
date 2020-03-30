@@ -1,5 +1,10 @@
+// ----
+// Dependencies
 import React from 'react';
 
+
+// ----
+// DebitIcon functional component
 export const DebitIcon = () => {
     return (
         <svg 

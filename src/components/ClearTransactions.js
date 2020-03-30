@@ -1,9 +1,14 @@
+// ----
+// Dependencies
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 
+// ----
+// ClearTransactions functional component
 export const ClearTransactions = () => {
 
+    // Pulling in state / context data
     const { 
         clearTransactions, updateIncomeOrExpenses, 
         updateExpenseTypeTotal, transactions 
@@ -24,7 +29,6 @@ export const ClearTransactions = () => {
     // Clearing all transactions and totals
     const handleClearTransactions = () => {
         clearTransactions();
-
         updateIncomeOrExpenses( 'incomeTotal', 0, 'clear' );
         updateIncomeOrExpenses( 'expensesTotal', 0, 'clear' );
 
@@ -32,6 +36,7 @@ export const ClearTransactions = () => {
             updateExpenseTypeTotal( expense.id,  0, 'clear' );
         }); 
     }
+
 
     // Returning the component
     if ( transactions.length >= 1 ) {

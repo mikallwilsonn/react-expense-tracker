@@ -8,11 +8,14 @@ import moment from 'moment';
 // ----
 // AddTransaction functional component
 export const AddTransaction = ({ formType }) => {
+
+    // Component hooks
     const [ text, setText ] = useState( '' );
     const [ amount, setAmount ] = useState( 0.00 );
     const [ expenseType, setExpenseType ]  = useState( 'expenseBills' );
     const [ date, setDate ] = useState( moment().format( "dddd, MMMM Do YYYY" ));
 
+    // Pulling in State / context data
     const { 
         addTransaction, updateIncomeOrExpenses, updateExpenseTypeTotal
     } = useContext( GlobalContext );
@@ -29,7 +32,8 @@ export const AddTransaction = ({ formType }) => {
     ];
 
 
-    // Render Expense Types
+    // Rendering the list of expense types for select menu
+    //  for when adding an expense transaction 
     const renderExpenseTypes = () => {
         return expenseTypes.map( type => {
             return (
@@ -44,12 +48,13 @@ export const AddTransaction = ({ formType }) => {
     }
 
 
-    // OnSubmit
+    // Functionality for when the form is submitted
     const onSubmit = ( event ) => {
         event.preventDefault();
 
         let newTransaction;
 
+        // Checking the formType to determie the structure of the transaction
         if ( formType === 'income' ) {
             newTransaction = {
                 id: Math.random().toString(16).slice(2),
@@ -79,8 +84,10 @@ export const AddTransaction = ({ formType }) => {
             }
         }
 
+        // Saving the transaction
         addTransaction( newTransaction );
 
+        // Updating totals
         if ( formType === 'income' ) {
             updateIncomeOrExpenses( 'incomeTotal', parseFloat( amount ), 'inc' );
         } else {
@@ -88,6 +95,7 @@ export const AddTransaction = ({ formType }) => {
             updateExpenseTypeTotal( newTransaction.expenseTypeId,  amount, 'inc' );
         }
 
+        // Resetting form values
         setText( '' );
         setAmount( 0 );
     }
@@ -122,7 +130,6 @@ export const AddTransaction = ({ formType }) => {
                 />
             </div>
 
-
             {
                 formType === 'expense' ?
                     <div className="m-0 p-0">
@@ -135,7 +142,6 @@ export const AddTransaction = ({ formType }) => {
                             { renderExpenseTypes() }
                         </select>
                     </div>
-
                 :
                     ''
             }

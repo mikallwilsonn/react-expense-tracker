@@ -15,19 +15,21 @@ import { CreditIcon } from './CreditIcon';
 // Transaction functional component
 export const Transaction = ({ transaction }) => {
 
+    // Pulling in state / context data
     const { 
         deleteTransaction, updateIncomeOrExpenses, updateExpenseTypeTotal 
     } = useContext( GlobalContext );
 
+    // Checking if income or expense to determine what sign to display value with
     let sign;
-
     if ( transaction.transactionType === 'income' ) {
         sign = '+';
     } else {
         sign = '-';
     }
 
-    // Render Transaction Icon
+
+    // Checking the transaction type to determine what icon to display with the transaction
     const renderTransactionIcon = () => {
         if ( transaction.transactionType === 'income' ) {
             return <DebitIcon />;

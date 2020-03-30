@@ -3,16 +3,12 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Doughnut } from 'react-chartjs-2';
-//import currencyFormatter from '../utils/currencyFormatter';
-
-
-// ----
-// Child Components
 
 
 // ----
 // TransactionCharts functional component
 export const TransactionCharts = () => {
+    // Pulling in state / context data
     const { incomeTotal, expensesTotal } = useContext( GlobalContext );
 
     const { 
@@ -21,7 +17,7 @@ export const TransactionCharts = () => {
     } = useContext( GlobalContext ).expenseTypes;
 
 
-    // Render Transactions Chart
+    // Render the transactions overview chart
     const renderTransactionsChart = () => {
         let data = [];
         let labels = [];
@@ -83,7 +79,7 @@ export const TransactionCharts = () => {
     }
 
 
-    // Render IVE Chart
+    // Rendering the Income vs. Expenses (ive) chart
     const renderIVEChart = () => {
         let data = [ incomeTotal, expensesTotal ];
         let labels = [ 'Income', 'Expenses' ];

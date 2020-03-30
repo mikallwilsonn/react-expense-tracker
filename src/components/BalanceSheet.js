@@ -8,8 +8,11 @@ import currencyFormatter from '../utils/currencyFormatter';
 // ----
 // BalanceSheet class component
 const BalanceSheet = () => {
+    // Pulling in state / context data
     const { transactions, incomeTotal, expensesTotal } = useContext( GlobalContext );
 
+    
+    // Rendering the component
     return (
         <table 
             id="BalanceSheet"
