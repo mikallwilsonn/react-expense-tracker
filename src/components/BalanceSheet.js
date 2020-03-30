@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import currencyFormatter from '../utils/currencyFormatter';
 
+
 // ----
 // BalanceSheet class component
 const BalanceSheet = () => {
@@ -15,6 +16,7 @@ const BalanceSheet = () => {
             className="d-flex flex-column p-0 m-0"
         >
             <thead className="p-0 m-0"></thead>
+
             <tbody className="p-0 m-0">
                 <tr>
                     <td className="font-regular">

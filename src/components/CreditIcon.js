@@ -7,6 +7,7 @@ export const CreditIcon = () => {
             width="518" 
             height="418" 
             viewBox="0 0 518 418"
+            role="img"
         >
             <defs>
                 <filter 

@@ -7,6 +7,7 @@ export const DebitIcon = () => {
             width="518" 
             height="318" 
             viewBox="0 0 518 318"
+            role="img"
         >
             <defs>
                 <filter 
