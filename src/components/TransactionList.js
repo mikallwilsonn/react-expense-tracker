@@ -11,9 +11,7 @@ import { Transaction } from './Transaction';
 // ----
 // TransactionList functional component
 export const TransactionList = () => {
-
     const { transactions } = useContext( GlobalContext );
-
 
     // ----
     // Check if there are transactions, if so render them
@@ -35,6 +33,7 @@ export const TransactionList = () => {
         }
     }
 
+    // Rendering the component
     return (
         <ul 
             id="list" 

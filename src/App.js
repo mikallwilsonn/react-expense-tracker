@@ -6,6 +6,7 @@ import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 
+
 // ----
 // Child Components
 import Header from './components/Header';
@@ -23,10 +24,12 @@ import { GlobalProvider } from './context/GlobalState';
 // App class component
 class App extends Component {
 
+    // Hiding the transaction overview when button is clicked
     hideOverview() {
         document.querySelector( '#RightPanel' ).classList.remove( 'slide-in' );
     }
 
+    // Rendering the component
     render() {
         return (
             <GlobalProvider>

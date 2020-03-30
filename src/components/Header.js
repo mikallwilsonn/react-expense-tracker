@@ -2,6 +2,7 @@
 // Dependencies
 import React, { Component } from 'react';
 
+
 // ----
 // Child Components
 import BalanceSheet from './BalanceSheet';
@@ -15,6 +16,7 @@ import { ViewOverviewButton } from './ViewOverviewButton';
 class Header extends Component {
     constructor() {
         super();
+        // Setting inital state
         this.state = { formToDisplay: null }
     }
 

@@ -7,10 +7,12 @@ import React from 'react';
 // ViewOverviewButton functional component
 export const ViewOverviewButton = () => {
 
+    // Adding a class to display overview panel when button is clicked
     const handleViewOverview = () => {
         document.querySelector( '#RightPanel' ).classList.add( 'slide-in' );
     }
 
+    // Rendering the component
     return (
         <button
             id="ViewOverviewButton"
@@ -22,5 +24,4 @@ export const ViewOverviewButton = () => {
             View Overview
         </button>
     );
-
 }

@@ -1,3 +1,5 @@
+// ----
+// formating the values into $$$ currency
 export default ( value ) => {
     const formatter = new Intl.NumberFormat( 'en-US', {
         style: 'currency',

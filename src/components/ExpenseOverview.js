@@ -9,6 +9,7 @@ import currencyFormatter from '../utils/currencyFormatter';
 // ExpenseOverview functional component
 export const ExpenseOverview = () => {
 
+    // Pulling in state / context data
     const { 
         expenseBills, expenseRentMortgage, expenseShopping, 
         expenseEntertainment, expenseDining 
@@ -21,6 +22,7 @@ export const ExpenseOverview = () => {
     ];
 
 
+    // Rendering each expense type overview and its total
     const renderOverview = () => {
         return overview.map( exp => {
             return (
