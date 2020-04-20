@@ -33,7 +33,10 @@ class App extends Component {
     render() {
         return (
             <GlobalProvider>
-                <div className="col-lg-12 p-0 m-0 row justify-content-between">
+                <div 
+                    data-testid="application"
+                    className="col-lg-12 p-0 m-0 row justify-content-between"
+                >
                     <div 
                         id="LeftPanel"
                         className="p-5 m-0"
